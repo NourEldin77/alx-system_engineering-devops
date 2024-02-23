@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+## script that print to stdout Best School 10 times but in 4 bad in 8 good
+i=0
+
+while [ $i -lt 10 ]
+do
+	((i++))
+	if [ "$i" -eq 4 ]; then
+		echo "bad luck"
+	elif [ "$i" -eq 8 ]; then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+done
