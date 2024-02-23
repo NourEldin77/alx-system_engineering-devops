@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+## print the content of the current direcorty in list format
+
+for line in $(find . | cut -d "/" -f "2" | cut -d "-" -f "2")
+do
+	if [[ "$line" != "." ]]; then
+		echo "$line"
+	fi
+done
