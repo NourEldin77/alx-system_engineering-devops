@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+## send SIGKILL using pkill
+
+pkill -f 4-to_infinity_and_beyond
