@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+## kill process To infinity
+
+My_PID=$(pgrep -f ./4-to_infinity_and_beyond)
+
+kill "$My_PID"
+
+
