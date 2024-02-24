@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+## kill script 7-highlander
+
+My_PID="$(pgrep -f 7-highlander)"
+
+kill -SIGKILL "$My_PID"
