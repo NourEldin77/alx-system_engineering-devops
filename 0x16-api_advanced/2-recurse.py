@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-import requests
+
+
 """ ToDo: Doc"""
 
 
+import requests
+
+
 def recurse(subreddit, hot_list=None, after=""):
-    """
-    ToDo : Doc
-    """
+    """ToDo : Doc """
     if hot_list is None:
         hot_list = []
 
