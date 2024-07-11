@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# listen to port 80 instead of 8080 and service status none
+sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
+service nginx restart
+kill -9 "$(cat /run/nginx.pid)"
