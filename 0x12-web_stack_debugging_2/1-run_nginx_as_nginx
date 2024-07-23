@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#ddkwndkw
+sed -i '1s/^/user nginx;\n/' /etc/nginx/nginx.conf
+sed -i '0,/http {/!b;//a\\tserver {\n\t\tlisten 8080;\n\t}' /etc/nginx/nginx.conf
+netstat -tulnpo | grep :8080 | awk '{print $7}' | awk -F'/' '{print $1}' | xargs kill -TERM
+chmod +r /etc/nginx/nginx.conf
+sudo su nginx
+service nginx restart
