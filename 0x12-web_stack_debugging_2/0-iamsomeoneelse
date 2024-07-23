@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# command switches to argument user and executes whoami
+sudo su "$1" -s '/bin/bash' -c 'whoami'
