@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-#ddkwndkw
+# change from root to nginx user
 sed -i '1s/^/user nginx;\n/' /etc/nginx/nginx.conf
 sed -i '0,/http {/!b;//a\\tserver {\n\t\tlisten 8080;\n\t}' /etc/nginx/nginx.conf
-netstat -tulnpo | grep :8080 | awk '{print $7}' | awk -F'/' '{print $1}' | xargs kill -TERM
+sed -i 's/80/8080/1' /etc/nginx/sites-enabled/default
+if ! netstat -tulnpo | grep :8080 | awk '{print $7}' | awk -F'/' '{print $1}' | xargs kill -TERM; then
+	pkill apache2
+fi
 chmod +r /etc/nginx/nginx.conf
-sudo su nginx
-service nginx restart
+sudo su nginx -s '/bin/bash' -c 'service nginx restart'

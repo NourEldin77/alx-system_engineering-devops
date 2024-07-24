@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# change from root to nginx user in  7 lines short and sweet.
+sed -i -e '1,/#/ s/#//'  -e 's/www\(-data\)\?/nginx/1' /etc/nginx/nginx.conf 
+sed -i 's/80/8080/1' /etc/nginx/sites-enabled/default
+pkill apache2
+chmod +r /etc/nginx/nginx.conf
+sudo su nginx -s '/bin/bash' -c 'service nginx restart'
