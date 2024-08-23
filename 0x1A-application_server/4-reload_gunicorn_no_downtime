@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# gracefully shut down some workers
+
+pids=$(pgrep gunicorn)
+
+master_pid=$(echo "$pids" | head -n 1)
+
+worker_pids=$(echo "$pids" | tail -n3)
+
+num_workers=3
+
+i=0
+for pid in $worker_pids; do
+    if [ $i -lt $num_workers ]; then
+        kill -TERM "$pid"
+	sleep 3
+        i=$((i + 1))
+    fi
+done
+
+kill -HUP "$master_pid"
